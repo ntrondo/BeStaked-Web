@@ -1,0 +1,26 @@
+﻿@using Willoch.DemoApp.Client.Services
+@inject IAssetsService Assets
+@implements IDisposable
+
+@if (Assets.WalletAssets is not null)
+{
+    <div class="balance">@Assets.WalletAssets.StakeableBalance</div>    
+
+    <h3>Legacy stakes</h3>
+    <StakeView Stakes="@Assets.WalletAssets[Shared.Stakes.StakeType.Legacy]" />
+
+    <h3>Transferable stakes</h3>
+    <StakeView Stakes="@Assets.WalletAssets[Shared.Stakes.StakeType.Transferable]" />
+}
+
+@code {
+    protected override void OnInitialized()
+        => Assets.DataRefreshed += OnAssetsChanged;
+
+
+    private void OnAssetsChanged(object sender, EventArgs e)
+        => StateHasChanged();
+
+    public void Dispose()
+        => Assets.DataRefreshed -= OnAssetsChanged;
+}

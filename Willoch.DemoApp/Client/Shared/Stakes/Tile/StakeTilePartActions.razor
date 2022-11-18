@@ -1,0 +1,9 @@
+
+<div class="is-flex is-flex-direction-row is-justify-content-flex-end mt-3 ">
+    @if (Stake.IsMature)
+    {
+        <div class="is-flex ml-2">
+            <button class="button is-size-7 is-danger" @onclick=@EndStakeClicked>End stake</button>
+        </div>
+    }   
+</div>

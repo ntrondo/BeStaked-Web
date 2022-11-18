@@ -1,0 +1,19 @@
+<div class="is-flex is-flex-direction-row is-justify-content-space-between mt-3 ">
+    <div class="is-flex">
+        <button class="button is-size-7" onclick="javascript:TStake.transferClicked(event);">Transfer</button>
+    </div>
+    <div class="is-flex ml-2">
+        <button class="button is-size-7 is-warning">Sell</button>
+    </div>
+    @if(Stake.IsMature){
+    <div class="is-reward is-flex ml-2"
+         title="Click to see the reward table for this stake." onclick="javascript:TStake.onRewardClicked(event);">
+        <span>Reward:</span>&nbsp;
+        <span class="stakeable symbol">@Stake.StakeableSymbol</span>&nbsp;<span class="reward stakeable amount">@TStake.Reward.Scaled.AmountString</span>&nbsp;&nbsp;
+        <span class="fiat symbol">@Stake.FiatSymbol</span>&nbsp;<span class="reward fiat amount">@TStake.Reward.Converted.Scaled.AmountString</span>
+    </div>
+    <div class="is-flex ml-2 metamask-connected is-hidden-when-ancestor-is-active is-hidden-when-ancestor-is-starting">
+        <button class="button is-size-7 is-danger" onclick="javascript:TStake.settleClicked(event);">End stake</button>
+    </div>
+    }
+</div>

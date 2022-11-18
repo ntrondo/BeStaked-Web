@@ -1,0 +1,58 @@
+﻿<nav class="navbar is-spaced is-size-4 is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item brand" href="/">@Constants.Brand</a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="navbar-menu">
+        <div class="navbar-start">
+            @if (IsConnected)
+            {
+                <a class="navbar-item" href="assets" title="My stakes">Assets</a>
+                <a class="navbar-item" href="mint" title="Create a new transferrable stake">Stake</a>
+            }            
+           
+            @if (IsProviderDetected)
+            {
+                <a class="navbar-item is-hidden" href="stats" title="Global contract statistics">Stats</a>
+            }            
+            <a class="navbar-item is-hidden" href="referrals">
+                Referrals
+            </a>
+            <a class="navbar-item development metamask-connected" href="develop">
+                development
+            </a>
+            <a class="navbar-item ropsten metamask-connected" href="ropsten">
+                ropsten
+            </a>
+        </div>
+        <div class="navbar-end">           
+            @if (IsLoaded)
+            {
+                @if(IsProviderDetected){
+                    <div class="navbar-item provider-icon">
+                    @if(IsConnected){
+                    <figure class="image is-32x32" title="Connected to wallet.">
+                        <img class="is-rounded" src="/img/mm-logo-small.png" width="32" height="32">
+                    </figure>
+                    }else{
+                    <a href onclick="walletConnector.Enable();return false;">
+                        <figure class="image is-32x32" title="Not connected. Connect to wallet">
+                            <img class="is-rounded is-grayscale" src="/img/mm-logo-small.png" width="32" height="32">
+                        </figure>
+                    </a>
+                    }
+                    </div>
+                }                
+            }            
+            else
+            {
+                    <div class="navbar-item">...</div>
+            }
+                      
+        </div>
+    </div>
+</nav>

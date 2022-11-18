@@ -1,0 +1,11 @@
+<div class="box is-flex is-flex-direction-column m-2 p-2 is-stake notification is-info" 
+    onclick="javascript:TStake.onStakeClicked(event);">
+    @* Stake id *@
+    <StakeTilePartId Stake=@Stake/> 
+     @* Amounts*@
+    <StakeTilePartAmounts Stake=@Stake />
+    @* Progress*@
+    <StakeTilePartProgress Stake=@Stake/>
+    @* Actions*@
+    <TStakeTilePartActions Stake=@Stake/>
+</div>

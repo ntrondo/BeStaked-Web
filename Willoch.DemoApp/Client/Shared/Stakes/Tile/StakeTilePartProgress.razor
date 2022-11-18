@@ -1,0 +1,14 @@
+<div class="is-flex is-flex-direction-column has-background-none has-text-inherit is-size-7">
+    <div class="is-flex is-flex-direction-row is-justify-content-space-between">
+        <div class="is-flex" title="% Complete"><span class="stake lapsed percentage">@ProgressString</span>
+        </div>
+        <div class="is-flex remaining time" title="Time to maturity"><span>@RemainingString</span></div>
+    </div>
+    <div class="is-flex">
+        <progress class="progress is-small is-success" value="@Progress" max="100"></progress>
+    </div>
+    <div class="is-flex is-flex-direction-row is-justify-content-space-between">
+        <div class="is-flex stake start date" title="First day of stake. 1 day after staking.">@FirstDayString</div>
+        <div class="is-flex stake end date" title="Day of maturity. 1 day after last day of stake.">@MaturityDayString</div>
+    </div>
+</div>

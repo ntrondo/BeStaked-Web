@@ -1,0 +1,30 @@
+﻿@inherits NumericInputComponentBase
+<div class="field is-horizontal">
+    <div class="field-label is-normal">
+        <label class="label">@Model.Label</label>
+    </div>
+    <div class="field-body">
+        <div class="field has-addons">
+            <p class="control">
+                <a class="button is-static">@Model.Symbol</a>
+            </p>
+            <p class="control is-expanded">
+                <input class="input has-text-right" type="text" @bind="@InputValue" />
+            </p>
+            @if(Model.Range > 0)
+            {
+                <p class="control">
+                <div class="select">
+                      <select @bind="@SelectedOption">
+                          <option disabled selected value>Preset amounts</option>
+                          @foreach(var option in RelativeAmountOptions)
+                        {
+                            <option value="@option.Label">@option.Amount.Scaled.AmountString @option.Label </option>
+                        }
+                </select>
+                </div>              
+            </p>
+            }            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "provider": "jsdelivr",
+      "library": "bulma@0.9.2",
+      "destination": "Styles/lib/bulma"
+    },
+    {
+      "provider": "unpkg",
+      "library": "@metamask/detect-provider@1.2.0",
+      "files": [ "dist/detect-provider.min.js" ],
+      "destination": "wwwroot/js/lib/metamask/detect-provider"
+    }
+  ]
+}

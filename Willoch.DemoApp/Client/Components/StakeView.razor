@@ -1,0 +1,15 @@
+﻿@using Willoch.DemoApp.Client.Code.Models
+
+<ul>
+    @foreach (var stake in Stakes)
+    {
+        <li @key="@stake.StakeId">@stake.Summary</li>
+    }
+</ul>
+
+
+@code {
+    [Parameter, EditorRequired]
+    public StakeInfo[] Stakes { get; set; }
+   
+}

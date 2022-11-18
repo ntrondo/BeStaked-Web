@@ -1,0 +1,134 @@
+﻿@using Willoch.DemoApp.Client.Shared.Stakes
+
+<section class="hero is-small">
+    <div class="hero-body is-size-6 has-text-centered">
+        @if (!IsLoaded)
+        {
+            <div class="notification is-info">Looking for network....</div>
+        }
+        else if (Network == null)
+        {
+            <div class="notification is-warning">Network not found</div>
+        }
+        else if (!IsConnected)
+        {
+            <div class="notification is-info not-connected">
+                <span>Not connected to ethereum wallet. </span>
+                <a class="" onclick="walletConnector.Enable();return false;">Connect to wallet</a>
+            </div>
+        }
+        else
+        {
+            if (Network.Type == "ropsten")
+            {
+                <div class="has-background-info has-text-white">Connected to the ropsten test net</div>
+            }
+             else if (Network.Type == "sepolia")
+            {
+                <div class="has-background-primary has-text-white">
+                    <span>Connected to the sepolia test net</span>
+                    <a class="ml-3 mr-3" href="https://sepolia-faucet.pk910.de/">ETH-Faucet</a>
+                    <a href="sepolia">HEX-Faucet</a>
+                </div>
+            }
+            else if (Network.Type == "development")
+            {
+                <div class="has-background-primary has-text-white">Connected to local development network</div>
+            }
+            else if (Network.Type == "main")
+            {
+                <div class="has-background-danger has-text-white">Connected to main net. Real money!</div>
+            }
+            else
+            {
+                <div class="has-background-info has-text-white">Connected to @Network.Type net</div>
+            }
+        }
+    </div>
+</section>
+@if (IsConnected)
+{
+    <section id="balancesRow" class="hero is-small">
+        <div class="hero-body is-size-6">
+            <table class="table has-background-none is-not-bordered" style="margin:auto;">
+                <tbody>
+                    <tr>
+                        <td class="is-hidden-mobile">
+                            <table class="table notification is-success">
+                                <tbody>
+                                    <tr>
+                                        <td>Liquid</td>
+                                        <td class="stakeable symbol">@Assets.StakeableSymbol</td>
+                                        <td class="balance liquid stakeable is-text-nowrap" title="@Assets.Balance.Scaled.Scale.Explanation">@Assets.Balance.Scaled.AmountString</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="is-hidden-mobile is-hidden-tablet-only">
+                            <table class="table notification is-primary">
+                                <tbody>
+                                    <tr>
+                                        <td>Legacy staked</td>
+                                        <td class="stakeable symbol">@Assets.StakeableSymbol</td>
+                                        <td class="balance legacy staked stakeable is-text-nowrap" title="@Assets.GetSum(StakeType.Legacy).Scaled.Scale.Explanation">@Assets.GetSum(StakeType.Legacy).Scaled.AmountString</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td class="is-hidden-mobile">
+                            <table class="table notification is-info">
+                                <tbody>
+                                    <tr>
+                                        <td>@Constants.Brand</td>
+                                        <td class="stakeable symbol">@Assets.StakeableSymbol</td>
+                                        <td class="balance wrapped stakeable is-text-nowrap" title="@Assets.GetSum(StakeType.Transferable).Scaled.Scale.Explanation">@Assets.GetSum(StakeType.Transferable).Scaled.AmountString</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                        <td>
+                            <table class="table notification is-warning">
+                                <tbody>
+                                    <tr>
+                                        <th>Total</th>
+                                        <td class="stakeable symbol">@Assets.StakeableSymbol</td>
+                                        <td class="balance total stakeable is-text-nowrap" title="@Assets.Sum.Scaled.Scale.Explanation">@Assets.Sum.Scaled.AmountString</td>
+                                        <td class="symbol fiat" title="@Assets.Sum.Converted.Original.Currency.Name">@Assets.FiatSymbol</td>
+                                        <td class="balance total fiat is-text-nowrap" title="@Assets.Sum.Converted.Scaled.Scale.Explanation">@Assets.Sum.Converted.Scaled.AmountString</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td>
+                            <a class="card-header-icon" title="Clear cache and reload assets" aria-label="more options" @onclick=ReloadClicked>
+                                <span class="icon">
+                                    <i class="fas fa-sync" aria-hidden="true"></i>
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+                    @if (IsLoadingAssets || IsValuatingAssets)
+                    {
+                        <tr>
+                            <td colspan="10" class="assets-load-indicator">
+                                <progress class="progress is-small is-primary" max="100"></progress>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+}
+@if (!IsProviderDetected)
+{
+    <section class="hero is-small no-provider-section">
+        <div class="hero-body is-size-6 has-background-warning">
+            <div class="">No ethereum wallet was detected. We recommend <a href="http://metamask.io">MetaMask</a></div>
+        </div>
+    </section>
+}
+

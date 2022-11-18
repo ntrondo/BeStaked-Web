@@ -1,0 +1,27 @@
+@page "/assets"
+
+<div class="section holdings-section">
+    @foreach(var stakesType in Stakes.StakeTypes)
+    {
+        <div >
+            <Willoch.DemoApp.Client.Shared.Stakes.StakesList StakeDisplayMode=@StakeDisplayMode Stakes=AdaptorFactory.CreateDisplayAdaptor(Stakes[stakesType],stakesType) />
+        </div>
+    }
+    
+  
+        <div id="inContractBalance">
+        <table class="table notification has-background-none">
+            <tbody>
+                <tr>
+                    <th>In-contract balance</th>
+                    <td><span>Collected and currently held on your behalf</span></td>
+                    <td class="stakeable symbol"></td>
+                    <td class="stakeable amount in-contract is-text-nowrap">0</td>
+                    <td class="symbol fiat">$</td>
+                    <td class="fiat amount in-contract is-text-nowrap">0</td>
+                    <td><a class="button is-small" onclick="javascript:TStake.onWithdrawClicked();">Withdraw</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

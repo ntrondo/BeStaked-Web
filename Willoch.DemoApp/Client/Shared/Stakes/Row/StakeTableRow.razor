@@ -1,0 +1,15 @@
+﻿<tr class="is-stake">
+    <td>
+        <h3 class="name has-text-weight-bold"></h3>
+        <p><span class="principal">@Stake.StakedAmount.Scaled.AmountString</span> <span class="stakeable symbol">@Stake.StakeableSymbol</span> staked in
+            <span class="year"></span> for <span class="duration text"></span>
+        </p>
+    </td>
+    <td class="shares">@Stake.Shares.Scaled.AmountString</td>
+    <td class="remaining time"></td>
+    <td class="principal stakeable">@Stake.StakedAmount.Scaled.AmountString</td>
+    <td class="accrued value stakeable"></td>
+    <td class="stake stakeable value market">@Stake.MarketValue.Scaled.AmountString</td>
+    <td class="stake stakeable value book">@Stake.BookValue.Scaled.AmountString</td>
+    <td class="stake fiat value book">@Stake.BookValue.Converted.Scaled.AmountString</td>
+</tr>

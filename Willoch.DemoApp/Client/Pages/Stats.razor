@@ -1,0 +1,66 @@
+@page "/stats"
+@inject IJSRuntime JsRuntime;
+<div class="section stats-section metamask-detected">
+    <div id="transferrableStakes" class="is-tiles-selected is-expanded mt-3">
+        <div class="is-flex  is-flex-direction-column has-background-primary">
+            <div
+                class="is-flex m-4 is-flex-direction-row is-flex-wrap-wrap is-justify-content-space-between title contract">
+                <div class="is-flex">All transferrable stakes on @Constants.Brand</div>
+                <Willoch.DemoApp.Client.Shared.Stakes.StakeGroupHeader />
+            </div>
+            <div class="is-flex ml-4 mr-4 loading-stakes-indicator">
+                <progress class="progress is-small is-primary" max="100"></progress>
+            </div>
+            <div class="is-flex is-list legacy stakes has-text-white has-background-primary is-expanded">
+                <table class="table is-stakes is-fullwidth has-background-none has-text-inherit">
+                    <tbody>
+                        <tr>
+                            <th></th>
+                            <th>Shares</th>
+                            <th>Remaining</th>
+                            <th>Principal <span class="stakeable symbol"></span></th>
+                            <th>Accrued <span class="stakeable symbol"></span></th>
+                            <th>Market value<span class="stakeable symbol"></span></th>
+                            <th>Book value<span class="stakeable symbol"></span></th>
+                            <th><span class="fiat symbol"></span></th>
+                        </tr>
+                        <tr class="template is-stake">
+                            <td>
+                                <h3 class="name has-text-weight-bold"></h3>
+                                <p><span class="principal"></span> <span class="stakeable symbol"></span> staked in
+                                    <span class="year"></span> for <span class="duration text"></span>
+                                </p>
+                            </td>
+                            <td class="shares"></td>
+                            <td class="remaining time"></td>
+                            <td class="principal stakeable"></td>
+                            <td class="accrued value stakeable"></td>
+                            <td class="stake stakeable value market"></td>
+                            <td class="stake stakeable value book"></td>
+                            <td class="stake fiat value book"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div
+                class="is-flex is-tiles is-flex-direction-row is-justify-content-flex-start is-flex-wrap-wrap is-stakes has-text-white is-expanded">
+                @* Template *@
+                @*<Willoch.DemoApp.Client.Shared.Stakes.TStakeTile />*@
+            </div>
+        </div>
+    </div>
+    <div id="contractBalance">
+        <table class="table notification has-background-none">
+            <tbody>
+                <tr>
+                    <th>Contract balance</th>
+                    <td><span class="">Fees collected and currently held by the transferrable stake contract</span></td>
+                    <td class="stakeable symbol"></td>
+                    <td class="stakeable amount is-text-nowrap">0</td>
+                    <td class="symbol fiat">$</td>
+                    <td class="fiat amount is-text-nowrap">0</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿<div class="field is-horizontal">
+    <div class="field-label is-normal">
+        <label class="label">@Model.Label</label>
+    </div>
+    <div class="field-body">
+        <div class="field is-narrow">
+            <div class="control">
+                <div class="select is-fullwidth">
+                    <select @oninput=OnStakeTypeChanged>
+                        @foreach (Shared.Stakes.StakeType type in Model.Values)
+                        {
+                            <option value="@type">@StakeTypeToStringConverter.Convert(type)</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

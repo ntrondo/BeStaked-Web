@@ -1,0 +1,10 @@
+td.assets-load-indicator{    
+    padding-top: 0;
+    padding-bottom: 0;
+    height:5px;    
+    position: relative;
+    top: -10px;
+}
+td.assets-load-indicator progress.progress{
+    height:100%;
+}

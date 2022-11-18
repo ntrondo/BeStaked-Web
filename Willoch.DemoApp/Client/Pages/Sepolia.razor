@@ -1,0 +1,30 @@
+﻿@page "/sepolia"
+@using UtilitiesLib.Models.Implementations
+<h1 class="title has-text-centered">Mint HEX</h1>
+ <div class="section mint-section">
+     <div class="container">
+       @* <form id="MintStakeablefrm">*@
+            <div class="field">
+                <label class="label">Amount</label>
+                <div class="control">
+                    <div class="select">
+                        <select @oninput=OnAmountChanged>
+                            @foreach (IComplexAmountModel amount in Amounts)
+                            {
+                                <option value="@amount.Amount">@amount.Scaled.AmountString</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <p class="control">
+                    <button class="button is-primary" @onclick="MintClicked">
+                        Mint
+                    </button>
+                </p>
+            </div>
+  @*      </form>*@
+     </div>
+ 
+ </div>

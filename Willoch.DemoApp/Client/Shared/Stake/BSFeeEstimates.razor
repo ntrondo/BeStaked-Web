@@ -1,0 +1,28 @@
+﻿@if (Model.AnyFees)
+{
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label">@Model.Label</label>
+        </div>
+        <div class="field-body">
+            <div class="">
+                <table class="table is-size-7 has-background-none m-auto">
+                    <tbody>
+                        @foreach(var line in Model.Lines)
+                        {
+                            <tr>
+                                <td>@line.Source</td>
+                                <td colspan=2>@line.Percentage.Scaled.AmountString</td>
+                                @if (Model.AnyAmount)
+                                {
+                                    <td>@Model.PrimarySymbol @line.Amount.Scaled.AmountString</td>
+                                    <td>@Model.ForeignSymbol @line.Amount.Converted.Scaled.AmountString</td>
+                                }
+                            </tr>
+                        }                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}

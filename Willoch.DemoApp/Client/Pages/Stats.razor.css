@@ -1,0 +1,10 @@
+div#contractBalance:not(.has-amount){display: none;}
+#transferrableStakes:not(.is-loading-stakes) .loading-stakes-indicator{display: none!important;}
+.loading-stakes-indicator{
+    height: 5px;
+    position: relative;
+    top: -5px;
+}
+.loading-stakes-indicator progress{
+    height: 100%;
+}

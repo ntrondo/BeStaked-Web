@@ -1,0 +1,218 @@
+﻿@page "/mint"
+<h1 class="title has-text-centered">Create new <span class="stakeable symbol"></span> stake</h1>
+<div class="section mint-section">
+
+    <div class="container">
+        <form id="CreateStakeForm">
+            <Willoch.DemoApp.Client.Shared.Stake.TypeSelector Model=@TypeModel />
+            <Willoch.DemoApp.Client.Shared.Stake.AmountInput Model=@AmountModel />
+            <Willoch.DemoApp.Client.Shared.Stake.AllowanceControl Model=@AllowanceModel />                  
+            <Willoch.DemoApp.Client.Shared.Stake.DurationInput Model=@DurationModel />
+            <Willoch.DemoApp.Client.Shared.Stake.SharesEstimate Model=@SharesEstimateModel />
+            <Willoch.DemoApp.Client.Shared.Stake.BSFeeEstimates Model="@FeeEstimateModel" />
+            <Willoch.DemoApp.Client.Shared.Stake.SubmitButton Model=@SubmitButtonModel />
+        </form>
+
+    </div>
+    <div class="container tabs is-toggle is-centered is-toggle-rounded is-hidden">
+        <ul>
+            <li class="is-active">
+                <a title="Mint transferrable stake">
+                    <span class="is-hidden-tablet">T-Stake</span>
+                    <span class="is-hidden-mobile">Transferrable Stake</span>
+                </a>
+            </li>
+            <li disabled>
+                <a title="Coming soon" disabled>
+                    <span class="is-hidden-tablet">F-Stake</span>
+                    <span class="is-hidden-mobile">Fungible Stake</span>
+                </a>
+            </li>
+            <li>
+                <a title="Coming later">
+                    <span class="is-hidden-tablet">P-Stake</span>
+                    <span class="is-hidden-mobile">Pooled Stake</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="container is-hidden">
+        <div class="field">
+            <div class="control">
+                <label class="radio">
+                    <input id="SimpleFormModecbx" type="radio" checked name="formMode"
+                           oninput="javascript: App.onFormModeChanged();">
+                    Simple
+                </label>
+                <label class="radio">
+                    <input type="radio" name="formMode" oninput="javascript: App.onFormModeChanged();">
+                    Detailed
+                </label>
+            </div>
+        </div>
+
+        <form id="MintTransferrableStakeForm">
+            <div class="field">
+                <div class="field-label">
+                    <label class="label">Stake amount</label>
+                </div>
+                <div class="field-body">
+                    <div class="field has-addons">
+                        <p class="control"><a class="button is-static symbol stakeable"></a></p>
+                        <p class="control is-expanded">
+                            <input class="input has-text-right amount" type="text"
+                                   oninput="javascripr:TStake.onAmountInput();">
+                        </p>
+                        <p class="control">
+                            <a class="button is-primary"
+                               onclick="javascript:TStake.maxAmountClicked();">Max</a>
+                        </p>
+                    </div>
+
+                </div>
+                <p class="help amount-too-high">The amount is too high</p>
+                <p class="help amount-too-low">The amount is too low</p>
+            </div>
+
+            <div class="level must-have-amount">
+                <div class="level-item">
+                    <table class="table has-background-none">
+                        <tbody>
+                            <tr>
+                                <th title="Does not include gas (ethereum required for writing the transaction to the blockchain)">
+                                    Total fees
+                                </th>
+                                <th><span class="mint percentage fee total"></span> %</th>
+                                <th>
+                                    <span class="symbol stakeable"></span>&nbsp;<span class="mint stakeable fee total"></span>
+                                </th>
+                                <th>
+                                    <span class="symbol fiat"></span>&nbsp;<span class="mint fiat fee total"></span>
+                                </th>
+                            </tr>
+                            <tr class="is-detailed">
+                                <td title="Collected by the publisher of the smart contract">Contract</td>
+                                <td><span class="mint percentage fee contract"></span> %</td>
+                                <td>
+                                    <span class="symbol stakeable"></span> <span class="mint stakeable fee contract"></span>
+                                </td>
+                                <td><span class="symbol fiat"></span> <span class="mint fiat fee contract"></span></td>
+                            </tr>
+                            <tr class="is-detailed">
+                                <td title="Collected by this site">BeStaked.com</td>
+                                <td><span class="mint percentage fee brand"></span> %</td>
+                                <td>
+                                    <span class="symbol stakeable"></span> <span class="mint stakeable fee brand"></span>
+                                </td>
+                                <td><span class="symbol fiat"></span> <span class="mint fiat fee brand"></span></td>
+                            </tr>
+                            <tr class="is-detailed is-hidden">
+                                <td title="Collected by the referring entity determined by the link you used to navigate to this site">
+                                    Referral
+                                </td>
+                                <td><span class="mint percentage fee referral"></span> %</td>
+                                <td>
+                                    <span class="symbol stakeable"></span> <span class="mint stakeable fee referral"></span>
+                                </td>
+                                <td><span class="symbol fiat"></span> <span class="mint fiat fee referral"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="level must-have-amount">
+                <div class="level-item is-size-5">
+                    <table class="table has-background-none">
+                        <tbody>
+                            <tr>
+                                <th>Pay amout</th>
+                                <th>
+                                    <span class="symbol stakeable"></span> <span class="stakeable amount payable mint"></span>
+                                </th>
+                                <th>
+                                    <span class="symbol fiat"></span> <span class="fiat amount payable mint"></span>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="box fix-allowance-too-low must-have-amount must-have-duration">
+                <div class="columns">
+                    <div class="column">
+                        <div class="label">Insufficient allowance</div>
+                        <Willoch.DemoApp.Client.Shared.Components.GasTable />
+                    </div>
+                    <div class="column">
+                        <div class="columns is-multiline is-mobile">
+                            <div class="column">
+                                <a class="button is-info"
+                                   onclick="javascript:TStake.allowExactClicked();" style="float:right;">
+                                    Allow
+                                    exact
+                                </a>
+                            </div>
+                            <div class="column">
+                                <a class="button is-primary"
+                                   onclick="javascript:TStake.allowUnlimitedClicked();" style="float:right;">
+                                    Allow
+                                    unlimited
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="is-size-6 is-detailed">
+                    The contract cannot draw funds from your account without prior approval. Even
+                    when the
+                    transaction comes from your wallet. The approval can only be used in transactions coming from your
+                    wallet.
+                </div>
+                <progress class="progress is-small is-primary" value="0" max="100"></progress>
+            </div>
+
+
+            <div class="field is-detailed">
+                <div class="field-label">
+                    <label class="label">Duration</label>
+                </div>
+                <div class="field-body">
+                    <div class="field has-addons">
+                        <p class="control"><a class="button is-static">Days</a></p>
+                        <p class="control is-expanded">
+                            <input class="input duration has-text-right" type="text"
+                                   oninput="javascript:TStake.onDurationInput();">
+                        </p>
+                        <p class="control">
+                            <a class="button" onclick="javascript:TStake.maxDurationClicked();">Max</a>
+                        </p>
+                    </div>
+                </div>
+                <p class="help">
+                @Constants.Brand recommends a duration of <span class="max duration portable"></span> days which is
+                    the
+                    maximum allowed.
+                </p>
+                <p class="help duration-too-long">The duration is too long</p>
+                <p class="help duration-too-short">The duration is too short</p>
+            </div>
+
+            <div class="is-size-6 is-detailed must-have-amount must-have-duration">
+                After minting you will be the owner of a <span class="has-text-weight-bold mint name"></span> token
+                valued at
+                <span class="symbol stakeable"></span> <span class="has-text-weight-bold mint value"></span>.
+            </div>
+            <div class="field is-grouped is-grouped-right mint-field must-have-amount must-have-duration">
+                <Willoch.DemoApp.Client.Shared.Components.GasTable />
+                <a class="button is-primary is-large  mint-button"
+                   onclick="javascript:TStake.mintClicked();">Mint</a>
+            </div>
+            <progress class="progress is-small is-primary must-have-amount must-have-duration mint-button" value="0"
+                      max="100"></progress>
+        </form>
+    </div>
+</div>

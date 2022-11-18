@@ -1,0 +1,54 @@
+<div class="is-flex m-3">
+    <table class="table table is-narrower is-fullwidth has-background-none has-text-inherit is-not-bordered">
+        <tbody>
+            <tr class="has-text-weight-semibold" title="principal + accrued - pennalty = book value">
+                <td>Book value</td>
+                <td>
+                    <span class="stakeable symbol">@Stake.StakeableSymbol</span>
+                </td>
+                <td>
+                    <span class="stake stakeable value book">@Stake.BookValue.Scaled.AmountString</span>
+                </td>
+                <td></td>
+                <td>
+                    <span class="fiat symbol">@Stake.FiatSymbol</span>
+                </td>
+                <td>
+                    <span class="stake fiat value book">@Stake.BookValue.Converted.Scaled.AmountString</span>
+                </td>
+            </tr>
+            <tr title="Latest availible performance on this share quantity">
+                <td>Daily interest</td>
+                <td>
+                    <span class="stakeable symbol">@Stake.StakeableSymbol</span>
+                </td>
+                <td>
+                    <span class="stake stakeable value performance daily">@Stake.DailyInterest.Scaled.AmountString</span>
+                </td>
+                <td></td>
+                <td>
+                    <span class="fiat symbol">@Stake.FiatSymbol</span>
+                </td>
+                <td>
+                    <span class="stake fiat value performance daily">@Stake.DailyInterest.Converted.Scaled.AmountString</span>
+                </td>
+            </tr>
+            <tr class="has-text-weight-bold" title="Estimate of neutral selling price if transferable and there is a market. Active stakes: accrued + future value (estimate)">
+                <td>Market value</td>
+                <td>
+                    <span class="stakeable symbol">@Stake.StakeableSymbol</span>
+                </td>
+                <td>
+                    <span class="stake stakeable value market">@Stake.MarketValue.Scaled.AmountString</span>
+                </td>
+                <td></td>
+                <td>
+                    <span class="fiat symbol">@Stake.FiatSymbol</span>
+                </td>
+                <td>
+                    <span class="stake fiat value market">@Stake.MarketValue.Converted.Scaled.AmountString</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

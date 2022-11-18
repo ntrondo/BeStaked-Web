@@ -1,0 +1,62 @@
+﻿@if (this.Model.AllowanceRequired)
+{
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label">@Model.Label</label>
+        </div>
+        <div class="field-body">
+            <div class="field has-addons">
+                <p class="control">
+                    @if (Model.SufficientAllowance)
+                    {
+                        <a class="button is-static">OK</a>
+                    }
+                    else
+                    {
+                        <a class="button is-static">Insufficient</a>
+                    }
+                </p>
+                <p class="control">
+                    @if (!IsExpanded)
+                    {
+                        <a class="button" @onclick="Expand" title="Expand to see details and actions.">
+                            <span class="icon">
+                                <i class="fas fa-angle-right" aria-hidden="true"></i>
+                            </span>
+                        </a>
+                    }
+                    else if (CanCollapse)
+                    {
+                        <a class="button" @onclick="Collapse" title="Hide details and actions.">
+                            <span class="icon">
+                                <i class="fas fa-angle-left" aria-hidden="true"></i>
+                            </span>
+                        </a>
+                    }
+
+                </p>
+                @if (IsExpanded)
+                {
+                    <p class="control is-expanded">
+                        <input type="text" readonly class="input has-text-centered" value="Current approval is @Model.Allowance.AmountString @Model.Symbol" />
+                    </p>
+                    @if (Model.AnyAllowance)
+                    {
+                        <p class="control">
+                            <a class="button" title="Clear existing approval." @onclick="ClearAllowanceClicked">Clear allowance</a>
+                        </p>
+                    }
+                    @if (!Model.SufficientAllowance)
+                    {
+                        <p class="control">
+                            <a class="button" title="Give approval for the exact amount required. Approval is required every time." @onclick="ApproveExactClicked">Allow @Model.RequiredAmountString @Model.Symbol</a>
+                        </p>
+                        <p class="control">
+                            <a class="button" title="Give approval for the maximum amount possible. Approval will not be required in future." @onclick="ApproveInfiniteClicked">Allow infinite</a>
+                        </p>
+                    }
+                }
+            </div>            
+        </div>        
+    </div>    
+}

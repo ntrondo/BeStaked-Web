@@ -1,0 +1,19 @@
+form:not(.is-detailed) .is-detailed{display:none;}
+form:not(.amount-too-high) .help.amount-too-high{display: none;}
+form:not(.amount-too-low) .help.amount-too-low{display: none;}
+form:not(.allowance-too-low) .fix-allowance-too-low{display: none;}
+form:not(.duration-too-long) .help.duration-too-long{display: none;}
+form:not(.duration-too-short) .help.duration-too-short{display: none;}
+form:not(.has-amount) .must-have-amount{display:none;}
+form:not(.has-duration) .must-have-duration{display:none;}
+
+
+div.section.mint-section{
+    
+    margin: auto;
+  }
+  .fee-estimate-refresh-button{
+    cursor:pointer;
+  }
+  
+  

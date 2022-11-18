@@ -1,0 +1,91 @@
+﻿@using Willoch.DemoApp.Client.Shared.Stakes.Row
+@using Willoch.DemoApp.Client.Shared.Stakes.Tile
+
+<div class="is-flex is-flex-direction-column has-background-warning">
+    <div class="is-flex m-4 is-flex-direction-row is-flex-wrap-wrap is-justify-content-space-between title ">
+        <div class="is-flex">@StakeTypeToStringConverter.Convert(StakeType)</div>
+        <div class="is-flex flex-direction-row is-flex-wrap-wrap is-justify-content-space-between">
+            <div class="is-flex mr-6">
+                <span class="stakeable symbol">@Stakes.StakeableSymbol</span>&nbsp;
+                <span class="sum staked stakeable">@Sum.Scaled.AmountString</span>
+            </div>
+            <div class="is-flex mr-6">
+                <span class="fiat symbol">@Stakes.FiatSymbol</span>&nbsp;
+                <span class="sum staked fiat">@Sum.Converted.Scaled.AmountString</span>
+            </div>
+            @if (StakeDisplayMode != Shared.Stakes.StakeDisplayMode.Table && IsExpanded)
+            {
+                <div class="is-flex mr-6">
+                    <a title="Display stakes as rows in a table" @onclick="DisplayTable">
+                        <span class="icon">
+                            <i class="fas fa-list" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </div>
+            }
+            @if (StakeDisplayMode != Shared.Stakes.StakeDisplayMode.Tiles && IsExpanded)
+            {
+                <div class="is-flex mr-6">
+                    <a title="Display stakes as tiles" @onclick="DisplayTiles" >
+                        <span class="icon">
+                            <i class="fas fa-th-large" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </div>
+            }
+            @if (IsExpanded)
+            {
+                <div class="is-flex mr-6">
+                    <a @onclick="Collapse">
+                        <span class="icon">
+                            <i class="fas fa-angle-up" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </div>
+            }
+            else
+            {
+                <div class="is-flex mr-6">
+                    <a @onclick="Expand">
+                        <span class="icon">
+                            <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+    @if (StakeDisplayMode == StakeDisplayMode.Table && IsExpanded)
+    {
+        <div class="is-flex stakes has-text-white has-background-primary">
+            <table class="table is-stakes is-fullwidth has-background-none has-text-inherit">
+                <tbody>
+                    <tr>
+                        <th></th>
+                        <th>Shares</th>
+                        <th>Remaining</th>
+                        <th>Principal <span class="stakeable symbol">@Stakes.StakeableSymbol</span></th>
+                        <th>Accrued <span class="stakeable symbol">@Stakes.StakeableSymbol</span></th>
+                        <th>Market value <span class="stakeable symbol">@Stakes.StakeableSymbol</span></th>
+                        <th>Book value <span class="stakeable symbol">@Stakes.StakeableSymbol</span></th>
+                        <th><span class="fiat symbol">@Stakes.FiatSymbol</span></th>
+                    </tr>
+                    @foreach (var stake in Stakes.StakeAdaptors)
+                    {
+                        <StakeTableRow Stake=stake />
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    @if (StakeDisplayMode == StakeDisplayMode.Tiles && IsExpanded)
+    {
+        <div class="is-flex is-flex-direction-row is-justify-content-flex-start is-flex-wrap-wrap is-stakes has-text-white">      
+            
+            @foreach(var stake in Stakes.StakeAdaptors)
+            {     
+                <DynamicComponent Type=@StakeTileType Parameters=@WrapKeyValue("Stake",stake)/> 
+            }            
+        </div>
+    }
+</div>

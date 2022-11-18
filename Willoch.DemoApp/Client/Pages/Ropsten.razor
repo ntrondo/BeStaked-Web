@@ -1,0 +1,88 @@
+@page "/ropsten"
+@inject IJSRuntime JsRuntime;
+@code {   
+   private bool IsNav2PageCalled = false;   
+   protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!this.IsNav2PageCalled)
+        {
+            await this.JsRuntime.InvokeVoidAsync("Src.onNav2Ropsten",new object[0]);
+            this.IsNav2PageCalled = true;
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }  
+}
+    <div class="section mint-section">
+        <form id="MintStakeablefrm">
+            <div class="field">
+                <a href="https://hexbay.win/mint.html">Mint stakeable here</a> 
+            </div>
+        </form>
+        <form id="Stakefrm" class="mt-6">
+            <div class="field">
+                <div class="field-label">
+                    <label class="label">Stake</label>
+                </div>
+                <div class="field-body">
+                    <div class="field has-addons">
+                        <p class="control"><a class="button is-static symbol stakeable"></a></p>
+                        <p class="control is-expanded"><input class="input amount has-text-right" type="number"></p>
+                        <p class="control"><a class="button is-primary"
+                                onclick="javascript: Stakeable.maxStakeAmountClicked();">Max</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="field-body">
+                    <div class="field has-addons">
+                        <p class="control"><a class="button is-static">Days</a></p>
+                        <p class="control is-expanded"><input class="input duration has-text-right" type="number"></p>
+                        <p class="control"><a class="button is-primary"
+                                onclick="javascript: Stakeable.maxStakeDurationClicked();">Max</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-grouped is-grouped-right">
+                <div class="control">
+                    <a class="button is-primary" onclick="javascript: Stakeable.stake();">Stake</a>
+                </div>
+            </div>
+        </form>
+        <form id="Jumpfrm" class="mt-6">
+            <div class="field">
+                <div class="field-label">
+                    <label class="label">Current day: <span class="stakeable day balance"></span></label>
+                </div>
+                <div class="field-body">
+                    <div class="field has-addons">
+                        <p class="control"><a class="button is-static">Jump days</a></p>
+                        <p class="control is-expanded"><input disabled id="JumpDays" class="input has-text-right" min=1 max=100
+                                type="number" value=1></p>
+                        <p class="control"><a disabled class="button is-primary"
+                                onclick="javascript: Stakeable.jumpDaysX2Clicked();">x2</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-grouped is-grouped-right">
+                <div class="control">
+                    <a class="button is-primary" disabled style="float:right;" onclick="javascript: Stakeable.jump();">Jump</a>
+                </div>
+            </div>
+        </form>
+
+        <form id="EndStakefrm" class="mt-6">
+            <div class="field is-horizontal">
+                <div class="field-label"> <label class="label">Mature stakes: <span
+                            class="stakes mature count"></span></label>
+                </div>
+
+                <div class="control">
+                    <a class="button is-primary" style="float:right;" onclick="javascript: Stakeable.endStake();">End
+                        one</a>
+                </div>
+            </div>
+        </form>
+    </div>

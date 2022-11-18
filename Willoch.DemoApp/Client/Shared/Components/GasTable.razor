@@ -1,0 +1,21 @@
+<table class="is-gas-estimate table has-background-none is-size-7 mr-3 is-narrow">
+    <tbody>
+        <tr>
+            <td>Estimated Gas</td>
+            <td class="fee-estimate-refresh-button" onclick="javascript:App.calculateNetworkFees();"
+                title="Reload fees from gasnow.org">
+                <span class="icon"><i class="fas fa-sync" aria-hidden="true"></i></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="symbol native">ETH</span>&nbsp;
+                <span class="native fee network"></span>
+            </td>
+            <td>
+                <span class="symbol fiat"></span>&nbsp;
+                <span class="fiat fee network"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

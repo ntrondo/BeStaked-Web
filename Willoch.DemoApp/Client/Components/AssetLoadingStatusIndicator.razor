@@ -1,0 +1,22 @@
+﻿@using Willoch.DemoApp.Client.Services
+
+@inject IAssetsService AssetService
+@implements IDisposable 
+
+@status
+
+@code {
+    private AssetsRetrievalStatus status = AssetsRetrievalStatus.NotStarted;
+
+    protected override void OnInitialized()
+        => AssetService.StatusChanged += OnAssetStatusChanged;
+
+    private void OnAssetStatusChanged(object sender, StatusChangedEventArgs e)
+    {
+        status = e.Status;
+        StateHasChanged();
+    }
+
+    public void Dispose()
+        => AssetService.StatusChanged -= OnAssetStatusChanged;
+}

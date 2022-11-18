@@ -1,0 +1,164 @@
+﻿@import "theme";
+@import "lib/bulma/bulma";
+@import "blazor";
+
+body{
+  background-color: $backgroundColor;
+  color: $textColor;
+  min-height: 100vh;
+}
+a,
+.notification.is-warning,
+.title{
+  color:inherit;
+}
+body:not(.metamask-detected) .metamask-detected{display:none !important;}
+body:not(.metamask-connected) .metamask-connected{display:none;} 
+body:not(.metamask-not-connected) .metamask-not-connected{display:none;} 
+body:not(.metamask-not-detected) .metamask-not-detected{display:none;} 
+
+body.single-address .multi-address{display:none;}
+body.multi-address .single-address{display:none;}
+
+body:not(.development) .development{display: none;}
+body:not(.ropsten) .ropsten{display: none;}
+body:not(.main) .main{display: none;}
+/* body.main .is-hidden-on-main{display: none;} */
+
+
+
+
+
+
+
+.address-dot {
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .has-text-inherit{
+    color:inherit;
+  }
+  .has-background-none{
+    background-color:transparent;    
+  }
+  .has-background-red{
+    background-color: rgb(221, 26, 26);    
+  }
+  .has-background-purple{
+    background-color: rgb(221, 26, 205);    
+  }
+  .has-background-blue{
+    background-color: rgb(46, 26, 221);    
+  }
+  .has-background-green{
+    background-color: rgb(123, 255, 0);    
+  }
+  .has-background-yellow{
+    background-color: rgb(251, 255, 16);    
+  }
+  .has-background-orange{
+    background-color: rgb(255, 163, 24);    
+  }
+  .content table td{
+    border-color: $textColor;
+  }
+  table.has-background-none{
+    td,th{
+      color: $textColor;
+    }
+  }
+  table.is-not-bordered td{
+    border:none;
+  }
+  table.is-narrower{
+      td,th{
+        padding: .15em .4em;
+      }
+  }
+
+ .is-max-width-500{
+   max-width: 500px;
+ }
+.is-underlined-style-1{
+    border-color: lightgray;
+    border-bottom-style: solid;
+    border-radius: 10px;
+  }
+  .is-text-nowrap{
+    white-space: nowrap;
+  }
+  div.tile.stakes .tile.is-stake{
+    width:15rem;
+  }
+
+  .rw-6{
+    width:50%;
+  }
+  .rw-12{
+    width:100%;
+  }
+
+  //app width
+  div.holdings-section{
+    @media screen and (max-width: 1120) {
+      width:34rem;
+    }
+    @media screen and (min-width: 1121px) and (max-width:1616px) {
+      width:65rem;
+    }
+    @media screen and (min-width: 1617px) and (max-width:2112px) {
+      width:96rem;
+    }
+    @media screen and (min-width: 2113px) and (max-width:2618px) {
+      width:127rem;
+    }
+  }
+  //Tiles on home page  
+  .image.fee-breakdown{
+    max-width:400px;
+    margin:auto;
+  }
+  .image.stake-overview{
+    max-width:900px;
+    margin:auto;
+  }
+
+  //Assets
+  .is-expanded .is-collapsed{display:none!important;}
+  .is-collapsed .is-expanded{display:none!important;}
+  .template{display: none!important;}  
+  div#legacyStakes:not(.is-tiles-selected) div.is-tiles{display:none!important;}
+  div#legacyStakes:not(.is-list-selected) div.is-list{display:none!important;}
+  div#transferrableStakes:not(.is-tiles-selected) div.is-tiles{display:none!important;}
+  div#transferrableStakes:not(.is-list-selected) div.is-list{display:none!important;}
+  .is-empty.hidden-when-empty{display:none!important;}
+  .is-active .is-hidden-when-ancestor-is-active{display:none!important;}
+  .is-starting .is-hidden-when-ancestor-is-starting{display:none!important;}
+  .is-mature .is-hidden-when-ancestor-is-mature{display:none!important;}
+  div.is-flex.is-stakes div.is-stake{
+    width:30rem;
+  }
+  .is-stake .is-reward{
+    cursor: pointer;
+  }
+  .is-stake:not(.is-my-stake) .only-my-stake{display:none!important;}
+
+  //mint
+  div.section.mint-section > div.container{
+      max-width:900px;
+  }
+form.amount-too-low,
+form.amount-too-high,
+form.allowance-too-low,
+form.duration-too-short,
+form.duration-too-long {
+  .mint-field{
+    display:none;
+  }
+}
+.fix-allowance-too-low .is-gas-estimate.table.has-background-none td{
+  color:inherit;
+}

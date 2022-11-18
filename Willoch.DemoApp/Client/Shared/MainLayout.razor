@@ -1,0 +1,26 @@
+﻿@inherits LayoutComponentBase
+@using Willoch.DemoApp.Client.Services 
+@inject IJSRuntime JsRuntime;
+@code{
+    private bool AppLoaded=false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(!this.AppLoaded){
+            this.AppLoaded = true;          
+        }        
+        await base.OnAfterRenderAsync(firstRender);
+    }
+}
+<NavMenu />
+<StatusBar />
+
+@Body
+
+<footer class="footer notification is-primary">
+    <div class="content has-text-centered">
+        <p>Built for Chrome browser with MetaMask extension</p>
+        <p><a href="mailto:bestaked@@outlook.com">Contact <strong class="brand">@Constants.Brand</strong></a></p>
+        <p>Read about HEX <a href="https://hex.com">here</a></p>
+    </div>
+</footer>

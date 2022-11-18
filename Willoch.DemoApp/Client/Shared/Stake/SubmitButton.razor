@@ -1,0 +1,11 @@
+﻿<div class="field is-horizontal">
+    <div class="field-label"></div>
+    <div class="field-body">
+        @if (Model.CanStake)
+        {
+            <div class="control">
+                <button class="button is-primary" type="button" @onclick="StakeClicked">@Model.Label</button>
+            </div>
+        }
+    </div>
+</div>

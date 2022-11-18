@@ -1,0 +1,207 @@
+﻿@page "/"
+@inject IJSRuntime JsRuntime;
+@code {
+    private bool IsNav2PageCalled = false;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!this.IsNav2PageCalled)
+        {
+            //await this.JsRuntime.InvokeVoidAsync("Src.onNav2Index", new object[0]);
+            this.IsNav2PageCalled = true;
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+}
+
+<h1 class="title has-text-centered">Transferrable <span class="stakeable symbol">HEX</span> stakes</h1>
+<h1 class="subtitle has-text-centered">Wrapped stakes on ethereum</h1>
+<div class="tile is-ancestor is-justify-content-center">
+    <div class="tile is-parent is-vertical is-9">
+        @* What is this*@
+        <article class="tile is-child notification is-success">
+            <p class="title">What is @Constants.Brand?</p>
+            <p class="subtitle">A smart-contract and this site</p>
+            <div class="content">
+                <!-- Content -->
+                <p>
+                    A smart-contract that wrappes <span class="stakeable symbol">HEX</span>-stakes as NFT's making them transferable.
+                    The @Constants.Brand contract is trustless without admin keys.<strong>View the contract with verified source code on etherscan <a href="https://etherscan.io/address/0x22E1A96E3103AC7a900DF634d0E2696D05100856" target="_blank">here</a>.</strong>
+                </p>
+                <p>
+                    This website enables all holders of <span class="stakeable symbol">HEX</span> to interact with the contract and take advantage of these features. @Constants.Brand hopes other sites will support the contract as well.
+                </p>
+                <p>
+                    <span class="stakeable symbol">HEX</span> does not support the transfer of a stake. This means the staker is stuck with his stake for the duration. This limitation does not apply to stakes created here.
+                    @Constants.Brand is designed for chrome with metamask on windows. It may or may not work for other setups. 
+                </p>
+            </div>
+        </article>
+              @* Trustless *@
+        <article class="tile is-child notification is-info">
+            <p class="title">Trustless</p>
+            <p class="subtitle">We do not have access to your assets</p>
+            <div class="content">
+                <p>
+                    The @Constants.Brand contract is based on ERC-721 non fungible token(NFT) standard. This makes your stake a non-fungible token that could be traded on existing trading platforms.
+                </p>
+                <p>
+                    @Constants.Brand have some admin access to the contract, but this is
+                    limited to adjusting names, url and maximum values for fees.
+                </p>
+                <p>
+                    At no point during the lifecycle of your stake does @Constants.Brand or
+                    any
+                    one else have access to your <span class="stakeable symbol">HEX</span> or stakes.
+                </p>
+            </div>
+
+        </article>
+        @* Low fees *@
+        <article class="tile is-child notification is-info">
+            <p class="title">Transparent low fees</p>
+            <p class="subtitle">All @Constants.Brand fees are charged up front.</p>
+            <div class="content">
+                <p>
+                    Before a stake is created on @Constants.Brand a breakdown of the fees charged
+                    are displayed.
+                    All fees are charged at the time of minting. No fees can be charged by @Constants.Brand for ending
+                    stakes.
+                </p>
+                <figure class="image fee-breakdown">
+                    <img src="/img/fees-breakdown.png">
+                </figure>
+                <p>
+                    Stakers can expect to pay 1 - 2 % fee for creating stakes. Its nothing compared to the
+                    yield they offer.
+                </p>
+            </div>
+        </article>
+ 
+         @* 5555 *@
+        <article class="tile is-child notification is-info">
+            <p class="title">5555</p>
+            <p class="subtitle">Make all your stakes 5 555 days</p>
+            <div class="content">
+                <!-- Content -->
+                <p>
+                    Take advantage of the 'Longer Pays Better' incentive and get 3 times the shares you get
+                    with short stakes. Enjoy your TShares as others are buying shares.
+                </p>
+                <p>
+                    When you want out simply sell the stake. It will be quite valuable as the share price has
+                    probably increased since you started it.
+                </p>
+            </div>
+        </article>
+        @* Stake and forget *@
+        <article class="tile is-child notification is-info">
+            <p class="title">Stake and forget</p>
+            <p class="subtitle">
+                Stakes are automatically settled and the <span class="stakeable symbol">HEX</span> is returned to the
+                owner
+            </p>
+            <div class="content">
+                <p>Anyone can end mature stakes made with @Constants.Brand. The address that ends a stake is rewarded acording to a formula. The reward is subtracted
+                    from the unstaked amount.
+                </p>
+                <p>Here is a table of the rewards paid for a stake with the default reward settings:</p>
+                <table class="table has-background-none m-auto is-max-width-500" style="margin:auto;">
+                    <tbody>
+                        <tr>
+                            <th class="has-text-centered">Days late</th>
+                            <th class="has-text-centered">Percentage of unstaked amount</th>
+                        </tr>
+                        <tr class="has-text-centered">
+                            <td>0</td>
+                            <td>0.0000 %</td>
+                        </tr>
+                        <tr class="has-text-centered">
+                            <td>1</td>
+                            <td>0.0001 %</td>
+                        </tr>
+                        <tr class="has-text-centered">
+                            <td>2</td>
+                            <td>0.0002 %</td>
+                        </tr>
+                        <tr class="has-text-centered">
+                            <td>5</td>
+                            <td>0.0016 %</td>
+                        </tr>
+
+                        <tr class="has-text-centered">
+                            <td>10</td>
+                            <td>0.0512 %</td>
+                        </tr>
+                        <tr class="has-text-centered">
+                            <td>15</td>
+                            <td>1.6384 %</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    The reward doubles every day. The maximum reward is 100% leaving the owner with nothing.
+                </p>
+                <p>You can avoid paying a reward by ending the stake on the day of maturity.</p>
+                <p>
+                    @Constants.Brand will monitor stakes and unstake them late in the first
+                    day
+                    when the profit for us is positive. This is to allow other actors to participate and add
+                    recilliency to the DAPP.
+                </p>
+            </div>
+        </article>
+         @* All your stakes in one place *@
+        <article class="tile is-child notification is-info">
+            <p class="title">All your stakes in one place</p>
+            <p class="subtitle">Manage both transferrable and legacy -stakes</p>
+            <div class="content">
+                <!-- Content -->
+                <p>
+                    @Constants.Brand allows you to manage all your stakes.
+                </p>
+                <figure class="image stakes-overview">
+                    <img src="/img/l-stake-tiles.png">
+                </figure>
+                  <figure class="image stakes-overview">
+                    <img src="/img/t-stake-tiles.png">
+                </figure>
+            </div>
+        </article>
+        <article class="tile is-child notification is-info">
+            <p class="title">What is next?</p>
+            <p>We have concrete plans for and are working to provide these new features.</p>
+            <p>Please contact @Constants.Brand with suggestions, ideas or expertise.</p>           
+            <p class="subtitle mt-4 mb-2">Improvements</p>
+            <ul>
+                <li>Allow custom reward stretching when staking. This is the number of days the end stake reward doubles before it reaches 100%. The default is currently 60 days.</li>
+                <li>Valuation formulas. Alternatives and elaborations.</li>
+                <li>Stake details view in pop-up.</li>
+            </ul>    
+            <p class="subtitle mt-4 mb-2">Fungible stakes</p>
+            <p>Create a ERC20 token with a transferrable stake. Sell any fraction of it.</p>
+            <p>
+                The <span class="stakeable symbol">HEX</span> is returned to the holders of the fractions
+                when the stake matures.
+            </p>
+            <p class="subtitle mt-4 mb-2">Check out coming features and fixes on <a href="https://test.bestaked.com">the test site</a></p>
+        </article>
+        <article class="tile is-child notification is-info is-hidden">
+            <p class="title">Coming later</p>
+            <p>We have concrete plans for these new features.</p>
+            <p>Please contact @Constants.Brand with suggestions, ideas or expertise.</p>
+            <p class="subtitle mt-4 mb-2">Arbitrage</p>
+            <p>Browse arbitrage opportunities amoung stakes for sale and mature stakes.</p>
+            <p class="subtitle mt-4 mb-2">Pooled stakes</p>
+            <p>Pool <span class="stakeable symbol">HEX</span> to make large stakes.</p>
+            <p>
+                A staker sets up a pool and specifies the duration and a minimum amount. Once the duration
+                and minimum amount is reached a fungible stake is minted with the amount and distributed to
+                the participants.
+            </p>
+            <p>
+                Bigger Pays Better. Make sure you take advantage of the 10% extra shares awarded large
+                stakes. Used to be for whales only.
+            </p>
+        </article>
+    </div>
+</div>

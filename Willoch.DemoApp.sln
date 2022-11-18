@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Willoch.DemoApp.Server", "Willoch.DemoApp\Server\Willoch.DemoApp.Server.csproj", "{0FAB2FE3-DDDA-4B3E-8D03-330B4BAA854D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Willoch.DemoApp.Client", "Willoch.DemoApp\Client\Willoch.DemoApp.Client.csproj", "{A95DAC3A-6460-426C-A6F8-3F630E6D7B3B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Willoch.DemoApp.Shared", "Willoch.DemoApp\Shared\Willoch.DemoApp.Shared.csproj", "{39EBF409-2D64-4544-9166-EAE4D684556B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ADFDA673-9387-4342-8289-7406EB6F8F25}"
+	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilitiesLib", "UtilitiesLib\UtilitiesLib.csproj", "{4467ABA4-6F53-4BEF-B8F7-C08A51BF1D44}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{1444E38E-F35B-40A7-9449-521E004246CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilitiesLibBeStaked", "UtilitiesLibBeStaked\UtilitiesLibBeStaked.csproj", "{EE147BCE-FFC8-4860-92D2-A2C8F60AF38A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FAB2FE3-DDDA-4B3E-8D03-330B4BAA854D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FAB2FE3-DDDA-4B3E-8D03-330B4BAA854D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FAB2FE3-DDDA-4B3E-8D03-330B4BAA854D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FAB2FE3-DDDA-4B3E-8D03-330B4BAA854D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A95DAC3A-6460-426C-A6F8-3F630E6D7B3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A95DAC3A-6460-426C-A6F8-3F630E6D7B3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A95DAC3A-6460-426C-A6F8-3F630E6D7B3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A95DAC3A-6460-426C-A6F8-3F630E6D7B3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39EBF409-2D64-4544-9166-EAE4D684556B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39EBF409-2D64-4544-9166-EAE4D684556B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39EBF409-2D64-4544-9166-EAE4D684556B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39EBF409-2D64-4544-9166-EAE4D684556B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4467ABA4-6F53-4BEF-B8F7-C08A51BF1D44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4467ABA4-6F53-4BEF-B8F7-C08A51BF1D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4467ABA4-6F53-4BEF-B8F7-C08A51BF1D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4467ABA4-6F53-4BEF-B8F7-C08A51BF1D44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1444E38E-F35B-40A7-9449-521E004246CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1444E38E-F35B-40A7-9449-521E004246CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1444E38E-F35B-40A7-9449-521E004246CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1444E38E-F35B-40A7-9449-521E004246CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE147BCE-FFC8-4860-92D2-A2C8F60AF38A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE147BCE-FFC8-4860-92D2-A2C8F60AF38A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE147BCE-FFC8-4860-92D2-A2C8F60AF38A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE147BCE-FFC8-4860-92D2-A2C8F60AF38A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FF16638D-989C-4059-91EA-0438DB8054F0}
+	EndGlobalSection
+EndGlobal

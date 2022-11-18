@@ -1,0 +1,60 @@
+﻿
+<div class="field is-horizontal">
+    @if (Model.SharePrice != null)
+    {
+        <div class="field-label is-normal">
+            <label class="label">@Model.Label</label>
+        </div>
+        <div class="field-body">
+            <div class="">
+                <table class="table is-size-7 has-background-none m-auto">
+               @*     <thead>
+                        <tr>
+                            <th colspan=4>Estimate based on current share price, entered amount and duration</th>
+                        </tr>
+                    </thead>*@
+                    <tbody>
+                        <tr>
+                            <td>Current share price</td>
+                            <td colspan=2>@Model.SharePrice.Original.AmountString</td>
+                        </tr>
+                        @if (Model.TotalAmount != null && Model.TotalAmount.Amount > 0)
+                        {
+                            @if(Model.EffectiveSharePrice.Scaled.AmountString != Model.SharePrice.Scaled.AmountString){
+                                <tr>
+                                    <td>Effective share price</td>
+                                    <td colspan=2>@Model.EffectiveSharePrice.Scaled.AmountString</td>
+                                    <td>This value changes with principal and duration.</td>
+                                </tr>
+                            }                           
+                            <tr>
+                                <th>Total shares</th>
+                                <th title="@Model.TotalShares.Scaled.Scale.Explanation">@Model.TotalShares.Scaled.AmountString</th>
+                            </tr>
+                           @* <tr>
+                                <td>Base</td>
+                                <td>@Model.PrimarySymbol @Model.BaseAmount.AmountString</td>
+                                <td>@Model.ForeignSymbol @Model.BaseAmount.Converted.AmountString</td>
+                                <td>100 %</td>
+                            </tr>
+                            <tr>
+                                <td>Bonus</td>
+                                <td>@Model.PrimarySymbol @Model.BonusAmount.AmountString</td>
+                                <td>@Model.ForeignSymbol @Model.BonusAmount.Converted.AmountString</td>
+                                <td>@Model.BonusAmount.Percentage.AmountString</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>@Model.PrimarySymbol @Model.TotalAmount.AmountString</td>
+                                <td>@Model.ForeignSymbol @Model.TotalAmount.Converted.AmountString</td>
+                                <td>@Model.TotalAmount.Percentage.AmountString</td>
+                                <th>@Model.TotalShares.AmountString</th>
+                            </tr>*@
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+
